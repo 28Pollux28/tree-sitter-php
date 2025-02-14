@@ -1,4 +1,4 @@
-module github.com/tree-sitter/tree-sitter-php
+module github.com/28Pollux28/tree-sitter-php
 
 go 1.22
 
