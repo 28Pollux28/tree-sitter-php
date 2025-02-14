@@ -862,7 +862,19 @@ module.exports = function defineGrammar(dialect) {
       switch_statement: $ => seq(
         keyword('switch'),
         field('condition', $.parenthesized_expression),
-        field('body', $.switch_block),
+        choice(
+          seq(
+            '{',
+            field('body', $.switch_block),
+            '}',
+          ),
+          seq(
+            ':',
+            field('body', $.switch_block),
+            'endswitch',
+            ';'
+          ),
+        ),
       ),
 
       switch_block: $ => choice(
